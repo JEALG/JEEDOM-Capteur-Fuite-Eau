@@ -7,7 +7,7 @@
         <div class="cmdName" style="#hideCmdName#">#name_display#</div>
     </div>
         <div class="content-sm ">
-            <span class="iconCmd#id#"></span>
+            <span class="iconCmd#uid#"></span>
     </div>
     <div style="font-weight: bold;font-size : 10px;">
         <span class="timeCmd#id#" ></span>
@@ -30,19 +30,15 @@
                 var srcImgSize 		= 'height='+srcImgHeight+'px width='+srcImgWidth+'px';
 		// Paramétrage des images
                 var srcImgURL 		= 'plugins/widget/core/template/dashboard/cmd.info.binary.Capteur-Fuite-Eau/';
-                var srcImgOn 		= srcImgURL +srcImglogoON+"."+srcImglogoON_T;    // Pour Valeur = 1
-                var srcImgOff 		= srcImgURL +srcImglogoOFF+"."+srcImglogoOFF_T; //  Pour valeur = 0
-                var srcImgError 	= srcImgURL +srcImglogoER+"."+srcImglogoER_T;   //  Pour valeur = Erreur
 		// Affichage durée changement dernier etat
                 var srcImglogoTime  = '#logoTime#';
-                var srcImgPath;
         
         if (_options.display_value == '1') {
-            $('.cmd[data-cmd_id=#id#] .iconCmd#id#').empty().append('<img src="'+srcImgOn+'" '+srcImgSize+'>');
+            $('.cmd[data-cmd_id=#id#] .iconCmd#uid#').empty().append('<img src="'+srcImgURL +srcImglogoON +'.'+ srcImglogoON_T+'" '+srcImgSize+'>');
         }else if (_options.display_value == '0') {
-            $('.cmd[data-cmd_id=#id#] .iconCmd#id#').empty().append('<img src="'+srcImgOff+'" '+srcImgSize+'>');
+            $('.cmd[data-cmd_id=#id#] .iconCmd#uid#').empty().append('<img src="'+srcImgURL +srcImglogoOFF +'.'+ srcImglogoOFF_T+'" '+srcImgSize+'>');
         }else {
-            $('.cmd[data-cmd_id=#id#] .iconCmd#id#').empty().append('<img src="'+srcImgError+'" '+srcImgSize+'>');
+            $('.cmd[data-cmd_id=#id#] .iconCmd#uid#').empty().append('<img src="'+srcImgURL +srcImglogoER +'.'+ srcImglogoER_T+'" '+srcImgSize+'>');
         }
       
 		// Derniere durée changement dernier etat
@@ -53,11 +49,11 @@
 				var srcdate     = new Date(_options.valueDate);
 				var srcformat   = $.datepicker.formatDate('D dd/mm', srcdate);
 				var srctime     = "à "+srcdate.getHours()+":"+(srcdate.getMinutes()<10?'0':'')+srcdate.getMinutes();
-				$('.cmd[data-cmd_id=#id#] .timeCmd#id#').empty().html(srcformat+'<br>'+srctime);
+				$('.cmd[data-cmd_id=#uid#] .timeCmd#id#').empty().html(srcformat+'<br>'+srctime);
 			} else if (srcImglogoTime == "heure") {
 				var srcdate     = new Date(_options.valueDate);
 				var srctime     = "à "+srcdate.getHours()+":"+(srcdate.getMinutes()<10?'0':'')+srcdate.getMinutes()+":"+(srcdate.getSeconds()<10?'0':'')+srcdate.getSeconds()+"";
-				$('.cmd[data-cmd_id=#id#] .timeCmd#id#').empty().html(srctime);
+				$('.cmd[data-cmd_id=#uid#] .timeCmd#id#').empty().html(srctime);
 			};
 		$('.cmd[data-cmd_id=#id#]').attr('title','Valeur du '+_options.valueDate+', collectée le '+_options.collectDate);
 	} 
